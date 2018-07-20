@@ -25,12 +25,4 @@ rod_cutting(Prices, Length) ->
 			     rod_cutting(Prices, Length - I)
 		   end,
 		   lists:seq(1, Length)),
-    {ok, Q} = list_max(Qs),
-    Q.
-
-list_max([]) -> empty;
-list_max([H | T]) -> {ok, list_max(H, T)}.
-
-list_max(X, []) -> X;
-list_max(X, [H | T]) when X < H -> list_max(H, T);
-list_max(X, [_ | T]) -> list_max(X, T).
+    lists:max(Qs).
